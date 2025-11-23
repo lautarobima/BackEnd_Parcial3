@@ -19,9 +19,8 @@ public class Request {
     private String address;
     @Column(name = "price")
     private Double price;
-
-    @OneToMany(mappedBy = "request", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> Products = new ArrayList<>();
+    @Column(name = "products")
+    private List<Long> Products = new ArrayList<>();
 
     Request() {
     }
@@ -31,7 +30,7 @@ public class Request {
         this.address = address;
         this.price = price;
     }
-    Request(String name, String phone, String address, Double price, List<Product> products) {
+    Request(String name, String phone, String address, Double price, List<Long> products) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -44,5 +43,5 @@ public class Request {
     public String getPhone() {return phone;}
     public String getAddress() {return address;}
     public Double getPrice() {return price;}
-    public List<Product> getProducts() {return Products;}
+    public List<Long> getProducts() {return Products;}
 }
