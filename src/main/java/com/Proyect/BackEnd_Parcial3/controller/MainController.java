@@ -44,6 +44,15 @@ public class MainController {
     }
 
     // POST Product
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        try {
+            productRepository.save(product);
+            return new ResponseEntity<>(product, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
     // GET Requests
