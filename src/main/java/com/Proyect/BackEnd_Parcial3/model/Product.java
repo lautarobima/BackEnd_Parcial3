@@ -40,11 +40,11 @@ public class Product {
     public String getBoxArt() {return boxArt;}
     public String getRelease() {return release;}
     public Double getPrice() {return price;}
-    
+
     @Override
     public String toString() {
         return "Product [id=" + id + ", title=" + title + ", genre=" + genre + ", developer=" + developer + ", boxArt="
-                + boxArt + ", release=" + release + ", price=" + price + ", offer=" + offer + "]";
+                + boxArt + ", release=" + release + ", price=" + price + "]";
     }
 
 }
