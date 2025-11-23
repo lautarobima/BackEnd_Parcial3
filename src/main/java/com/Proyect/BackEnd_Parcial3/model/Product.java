@@ -24,6 +24,10 @@ public class Product {
     @Column(name = "offer")
     private Double offer;
 
+    @ManyToOne
+    @JoinColumn(name = "request_id")
+    private Request request;
+
     Product() {
     }
     Product(String title, String genre, String developer, String boxArt, String release, Double price, Double offer) {
