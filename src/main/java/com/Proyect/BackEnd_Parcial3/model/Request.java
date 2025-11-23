@@ -1,7 +1,5 @@
 package com.Proyect.BackEnd_Parcial3.model;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +20,7 @@ public class Request {
     private String address;
     @Column(name = "price")
     private Double price;
-    @Column(name = "status")
+    @Column(name = "status") // pendiente or atendido
     private String status;
     //@Column(name = "products")
     //private List<Long> Products = new ArrayList<>();

@@ -21,6 +21,7 @@ public class MainController {
 
     @Autowired private ProductRepository productRepository;
     @Autowired private EmployeeRepository employeeRepository;
+    @Autowired private RequestRepository requestRepository;
     
     @GetMapping("/")
     public String index() {
@@ -54,10 +55,37 @@ public class MainController {
         }
     }
 
+    
+
 
     // GET Requests
+    @GetMapping("/requests")
+    public ResponseEntity<List<Request>> getRequests() {
+        try {
+            List<Request> requests = new ArrayList<Request>();
+
+            requestRepository.findAll().forEach(requests::add);
+
+            if (requests.isEmpty()) 
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(requests, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // POST Request
+    @PostMapping("/requests")
+    public ResponseEntity<Request> createRequest(@RequestBody Request request) {
+        try {
+            requestRepository.save(request);
+            return new ResponseEntity<>(request, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 
 
     // GET Employees
