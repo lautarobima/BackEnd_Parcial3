@@ -20,8 +20,8 @@ public class Product {
     private String developer;
     @Column(name = "boxArt")
     private String boxArt;
-    @Column(name = "release_date")
-    private String release_date;
+    @Column(name = "releaseDate")
+    private String releaseDate;
     @Column(name = "price")
     private Double price;
     @Column(name = "offer")
@@ -37,12 +37,12 @@ public class Product {
 
     Product() {
     }
-    Product(String title, String genre, String developer, String boxArt, String release_date, Double price, Double offer) {
+    Product(String title, String genre, String developer, String boxArt, String releaseDate, Double price, Double offer) {
         this.title = title;
         this.genre = genre;
         this.developer = developer;
         this.boxArt = boxArt;
-        this.release_date = release_date;
+        this.releaseDate = releaseDate;
         this.price = price;
         this.offer = offer;
     }
@@ -52,14 +52,14 @@ public class Product {
     public String getGenre() {return genre;}
     public String getDeveloper() {return developer;}
     public String getBoxArt() {return boxArt;}
-    public String getReleaseDate() {return release_date;}
+    public String getReleaseDate() {return releaseDate;}
     public Double getPrice() {return price;}
     public Double getOffer() {return offer;}
 
     @Override
     public String toString() {
         return "Product [id=" + id + ", title=" + title + ", genre=" + genre + ", developer=" + developer + ", boxArt="
-                + boxArt + ", release=" + release_date + ", price=" + price + ", offer=" + offer + "]";
+                + boxArt + ", release=" + releaseDate + ", price=" + price + ", offer=" + offer + "]";
     }
 
 }
