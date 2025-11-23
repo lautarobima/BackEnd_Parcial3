@@ -78,13 +78,27 @@ public class MainController {
     @PostMapping("/requests")
     public ResponseEntity<Request> createRequest(@RequestBody Request request) {
         try {
-
-            request.getProducts().add(productRepository.findById(1L).get());
-            productRepository.findById(1L).get().getRequests().add(request);
-
             requestRepository.save(request);
             return new ResponseEntity<>(request, HttpStatus.CREATED);
         } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // POST, link Product to Request
+    @PostMapping("/requests/{requestId}/products/{productId}")
+    public ResponseEntity<Request> addProductToRequest(@PathVariable Long requestId, @PathVariable Long productId) {
+        try {
+            Request request = requestRepository.findById(requestId).get();
+            Product product = productRepository.findById(productId).get();
+
+            request.getProducts().add(product);
+            product.getRequests().add(request);
+
+            requestRepository.save(request);
+            return new ResponseEntity<>(request, HttpStatus.CREATED);
+        }
+        catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
