@@ -3,6 +3,8 @@ package com.Proyect.BackEnd_Parcial3.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -27,6 +29,7 @@ public class Product {
     @Column(name = "offer")
     private Double offer;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "request_products",
