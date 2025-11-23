@@ -3,7 +3,7 @@ package com.Proyect.BackEnd_Parcial3.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 public class Product {
 	
     @Id
