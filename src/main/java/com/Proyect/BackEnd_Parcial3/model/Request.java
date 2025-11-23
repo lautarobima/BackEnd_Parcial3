@@ -22,6 +22,8 @@ public class Request {
     private String address;
     @Column(name = "price")
     private Double price;
+    @Column(name = "status")
+    private String status;
     //@Column(name = "products")
     //private List<Long> Products = new ArrayList<>();
     @ManyToMany(mappedBy = "requests")
