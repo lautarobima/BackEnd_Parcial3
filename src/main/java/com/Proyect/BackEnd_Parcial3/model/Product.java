@@ -21,19 +21,16 @@ public class Product {
     private String release;
     @Column(name = "price")
     private Double price;
-    @Column(name = "offer")
-    private Double offer;
 
     Product() {
     }
-    Product(String title, String genre, String developer, String boxArt, String release, Double price, Double offer) {
+    Product(String title, String genre, String developer, String boxArt, String release, Double price) {
         this.title = title;
         this.genre = genre;
         this.developer = developer;
         this.boxArt = boxArt;
         this.release = release;
         this.price = price;
-        this.offer = offer;
     }
 
     public Long getId() {return id;}
@@ -43,8 +40,7 @@ public class Product {
     public String getBoxArt() {return boxArt;}
     public String getRelease() {return release;}
     public Double getPrice() {return price;}
-    public Double getOffer() {return offer;}
-
+    
     @Override
     public String toString() {
         return "Product [id=" + id + ", title=" + title + ", genre=" + genre + ", developer=" + developer + ", boxArt="
