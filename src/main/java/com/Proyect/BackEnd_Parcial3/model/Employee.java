@@ -9,15 +9,12 @@ import jakarta.persistence.*;
 public class Employee {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "password")
     private String password;
-
-    @OneToMany(mappedBy = "request", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> Products = new ArrayList<>();
 
     Employee() {
     }
