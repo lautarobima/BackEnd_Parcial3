@@ -55,7 +55,7 @@ public class MainController {
         }
     }
 
-    
+
 
 
     // GET Requests
@@ -78,6 +78,10 @@ public class MainController {
     @PostMapping("/requests")
     public ResponseEntity<Request> createRequest(@RequestBody Request request) {
         try {
+
+            request.getProducts().add(productRepository.findById(1L).get());
+            productRepository.findById(1L).get().getRequests().add(request);
+
             requestRepository.save(request);
             return new ResponseEntity<>(request, HttpStatus.CREATED);
         } catch (Exception e) {

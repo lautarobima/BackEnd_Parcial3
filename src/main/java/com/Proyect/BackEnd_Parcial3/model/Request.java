@@ -29,17 +29,19 @@ public class Request {
 
     Request() {
     }
-    Request(String name, String phone, String address, Double price) {
+    Request(String name, String phone, String address, Double price, String status) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.price = price;
+        this.status = status;
     }
-    Request(String name, String phone, String address, Double price, Set<Product> products) {
+    Request(String name, String phone, String address, Double price, String status, Set<Product> products) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.price = price;
+        this.status = status;
         this.products = products;
     }
 
@@ -48,5 +50,6 @@ public class Request {
     public String getPhone() {return phone;}
     public String getAddress() {return address;}
     public Double getPrice() {return price;}
+    public String getStatus() {return status;}
     public Set<Product> getProducts() {return products;}
 }

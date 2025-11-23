@@ -55,6 +55,7 @@ public class Product {
     public String getReleaseDate() {return releaseDate;}
     public Double getPrice() {return price;}
     public Double getOffer() {return offer;}
+    public Set<Request> getRequests() {return requests;}
 
     @Override
     public String toString() {
