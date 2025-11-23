@@ -19,8 +19,8 @@ import com.Proyect.BackEnd_Parcial3.repositories.*;
 
 public class MainController {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    @Autowired private ProductRepository productRepository;
+    @Autowired private EmployeeRepository employeeRepository;
     
     @GetMapping("/")
     public String index() {
@@ -28,6 +28,20 @@ public class MainController {
     }
 
     // GET Products
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts() {
+        try {
+            List<Product> products = new ArrayList<Product>();
+
+            productRepository.findAll().forEach(products::add);
+
+            if (products.isEmpty()) 
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // POST Product
 

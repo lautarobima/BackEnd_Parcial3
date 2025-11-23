@@ -24,4 +24,9 @@ public class Employee {
     public Long getId() {return id;}
     public String getName() {return name;}
     public String getPassword() {return password;}
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", password=" + password + "]";
+    }
 }

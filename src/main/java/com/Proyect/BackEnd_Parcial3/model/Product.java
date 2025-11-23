@@ -45,4 +45,10 @@ public class Product {
     public Double getPrice() {return price;}
     public Double getOffer() {return offer;}
 
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", title=" + title + ", genre=" + genre + ", developer=" + developer + ", boxArt="
+                + boxArt + ", release=" + release + ", price=" + price + ", offer=" + offer + "]";
+    }
+
 }
