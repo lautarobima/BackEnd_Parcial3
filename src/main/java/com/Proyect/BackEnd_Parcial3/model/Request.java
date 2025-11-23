@@ -2,6 +2,9 @@ package com.Proyect.BackEnd_Parcial3.model;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,8 +22,10 @@ public class Request {
     private String address;
     @Column(name = "price")
     private Double price;
-    @Column(name = "products")
-    private List<Long> Products = new ArrayList<>();
+    //@Column(name = "products")
+    //private List<Long> Products = new ArrayList<>();
+    @ManyToMany(mappedBy = "requests")
+    private Set<Product> products = new HashSet<>();
 
     Request() {
     }
@@ -30,12 +35,12 @@ public class Request {
         this.address = address;
         this.price = price;
     }
-    Request(String name, String phone, String address, Double price, List<Long> products) {
+    Request(String name, String phone, String address, Double price, Set<Product> products) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.price = price;
-        this.Products = products;
+        this.products = products;
     }
 
     public Long getId() {return id;}
@@ -43,5 +48,5 @@ public class Request {
     public String getPhone() {return phone;}
     public String getAddress() {return address;}
     public Double getPrice() {return price;}
-    public List<Long> getProducts() {return Products;}
+    public Set<Product> getProducts() {return products;}
 }

@@ -1,5 +1,8 @@
 package com.Proyect.BackEnd_Parcial3.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -23,6 +26,14 @@ public class Product {
     private Double price;
     @Column(name = "offer")
     private Double offer;
+
+    @ManyToMany
+    @JoinTable(
+        name = "request_products",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "request_id")
+    )
+    private Set<Request> requests = new HashSet<>();
 
     Product() {
     }
