@@ -2,12 +2,10 @@ package com.Proyect.BackEnd_Parcial3.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,15 +83,20 @@ public class MainController {
         }
     }
 
-    // POST, link Product to Request
-    @PostMapping("/requests/{requestId}/products/{productId}")
-    public ResponseEntity<Request> addProductToRequest(@PathVariable Long requestId, @PathVariable Long productId) {
+    // PUT, link Product to Request
+    @PutMapping("/requests/{requestId}/products/{productId}")
+    public ResponseEntity<Request> addProductToRequest(@PathVariable Long requestId, @PathVariable Long productId, @RequestBody String jsonString) {
         try {
             Request request = requestRepository.findById(requestId).get();
             Product product = productRepository.findById(productId).get();
 
             request.getProducts().add(product);
             product.getRequests().add(request);
+
+            // applying cuantity
+            JSONObject jsonObject = new JSONObject(jsonString);
+            Integer cuantity = jsonObject.getInt("cuantity");
+            request.getCuantity().put(productId, cuantity);
 
             requestRepository.save(request);
             return new ResponseEntity<>(request, HttpStatus.CREATED);
