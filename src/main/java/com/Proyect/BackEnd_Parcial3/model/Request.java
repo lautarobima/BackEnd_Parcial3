@@ -1,8 +1,9 @@
 package com.Proyect.BackEnd_Parcial3.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.HashMap;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -24,7 +25,7 @@ public class Request {
     @Column(name = "status") // pendiente or atendido
     private String status;
     @Column(name = "cuantity")
-    private HashMap<Long, Integer> cuantity = new HashMap<>();
+    private List<Integer> cuantity = new ArrayList<>();
     //@Column(name = "products")
     //private List<Long> Products = new ArrayList<>();
     @ManyToMany(mappedBy = "requests")
@@ -54,6 +55,6 @@ public class Request {
     public String getAddress() {return address;}
     public Double getPrice() {return price;}
     public String getStatus() {return status;}
-    public HashMap<Long, Integer> getCuantity() {return cuantity;}
+    public List<Integer> getCuantity() {return cuantity;}
     public Set<Product> getProducts() {return products;}
 }
