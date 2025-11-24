@@ -95,7 +95,7 @@ public class MainController {
 
             // applying cuantity
             JSONObject jsonObject = new JSONObject(jsonString);
-            Integer cuantity = jsonObject.getInt("cuantity");
+            String cuantity = jsonObject.getString("cuantity");
             request.getCuantity().add(cuantity);
 
             requestRepository.save(request);

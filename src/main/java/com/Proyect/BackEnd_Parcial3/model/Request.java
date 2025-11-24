@@ -25,7 +25,7 @@ public class Request {
     @Column(name = "status") // pendiente or atendido
     private String status;
     @Column(name = "cuantity")
-    private List<Integer> cuantity = new ArrayList<>();
+    private List<String> cuantity = new ArrayList<>();
     //@Column(name = "products")
     //private List<Long> Products = new ArrayList<>();
     @ManyToMany(mappedBy = "requests")
@@ -55,6 +55,6 @@ public class Request {
     public String getAddress() {return address;}
     public Double getPrice() {return price;}
     public String getStatus() {return status;}
-    public List<Integer> getCuantity() {return cuantity;}
+    public List<String> getCuantity() {return cuantity;}
     public Set<Product> getProducts() {return products;}
 }
