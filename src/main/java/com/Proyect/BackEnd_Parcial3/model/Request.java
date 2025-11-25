@@ -57,4 +57,10 @@ public class Request {
     public String getStatus() {return status;}
     public List<String> getCuantity() {return cuantity;}
     public Set<Product> getProducts() {return products;}
+
+    public void setName(String name) {this.name = name;}
+    public void setPhone(String phone) {this.phone = phone;}
+    public void setAddress(String address) {this.address = address;}
+    public void setPrice(Double price) {this.price = price;}
+    public void setStatus(String status) {this.status = status;}
 }

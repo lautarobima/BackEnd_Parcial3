@@ -83,6 +83,25 @@ public class MainController {
         }
     }
 
+    // PUT Request
+    @PutMapping("/requests/{id}")
+    public ResponseEntity<Request> updateRequest(@PathVariable Long id, @RequestBody Request requestDetails) {
+        try {
+            Request request = requestRepository.findById(id).get();
+
+            request.setName(requestDetails.getName());
+            request.setPhone(requestDetails.getPhone());
+            request.setAddress(requestDetails.getAddress());
+            request.setPrice(requestDetails.getPrice());
+            request.setStatus(requestDetails.getStatus());
+            
+            requestRepository.save(request);
+            return new ResponseEntity<>(request, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     // PUT, link Product to Request
     @PutMapping("/requests/{requestId}/products/{productId}")
     public ResponseEntity<Request> addProductToRequest(@PathVariable Long requestId, @PathVariable Long productId, @RequestBody String jsonString) {
